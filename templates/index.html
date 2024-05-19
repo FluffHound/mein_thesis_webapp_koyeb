@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Website prediksi harga penawaran rumah pada wilayah Kota Surabaya" />
+        <meta name="author" content="Muhammad Hanif Sudibyo" />
+        <title>Hope to Home</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='assets/web_icon.png')}}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+            <!-- AJAX JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            * {box-sizing: border-box;}
+            body {font-family: Verdana, sans-serif;}
+            img {vertical-align: middle;}
+            
+            /* Caption text */
+            .text {
+                color: #f2f2f2;
+                font-size: 15px;
+                padding: 8px 12px;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Fading animation */
+            .fade {
+                animation-name: fade;
+                animation-duration: 1s;
+            }
+            
+            @keyframes fade {
+                from {opacity: .4} 
+                to {opacity: 1}
+            }
+            
+            /* On smaller screens, decrease text size */
+            @media only screen and (max-width: 300px) {
+            .text {font-size: 11px}
+            }
+
+            /* Slider Range Price */
+            .slidecontainer {
+            width: 100%;
+            }
+
+            .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            }
+
+            .slider:hover {
+            opacity: 1;
+            }
+
+            .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2b2626;
+            cursor: pointer;
+            }
+
+            .slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2b2626;
+            cursor: pointer;
+            }
+            /* Card KPR */
+            *,
+            *:before,
+            *:after {
+            box-sizing: border-box;
+            }
+
+            p {
+            margin: 0;
+            }
+
+            p:not(:last-child) {
+            margin-bottom: 1.5em;
+            }
+
+
+            .card {
+            /* max-width: 300px; */
+            min-height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            max-width: 500px;
+            height: auto;
+            padding: 35px;
+            margin-right: -20%;
+            margin-left: 80px;
+
+            border: 2px solid rgba(255, 255, 255, .25);
+            border-radius: 20px;
+            background-color: rgba(255, 185, 9, 0.877);
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+            backdrop-filter: blur(15px);
+            }
+
+            .card-footer {
+            font-size: 0.65em;
+            color: #446;
+            }
+
+            /* Position the image container (needed to position the left and right arrows) */
+            .container {
+            position: relative;
+            }
+
+            /* Hide the images by default */
+            .mySlides {
+            display: none;
+            }
+
+            /* Add a pointer when hovering over the thumbnail images */
+            .cursor {
+            cursor: pointer;
+            }
+
+            /* Next & previous buttons */
+            .prev,
+            .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            background-color: rgba(0, 0, 0, 0.4);
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            -webkit-text-stroke-color: #2b2626;
+            -webkit-text-stroke-width: 0.5px;
+            }
+
+            /* Container for image text */
+            .caption-container {
+            text-align: center;
+            background-color: #222;
+            padding: 2px 16px;
+            color: white;
+            }
+
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            /* Six columns side by side */
+            .column {
+            float: left;
+            width: 16.66%;
+            }
+
+            /* Add a transparency effect for thumnbail images */
+            .demo {
+            opacity: 0.6;
+            }
+
+            .active,
+            .demo:hover {
+            opacity: 1;
+            }
+
+            /* BS4 CSS Override */
+            .img-fluid
+            {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        </style>
+    </head>
+    
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand cursor"><img src="{{url_for('static', filename='assets/img/navbar_logo.png')}}" alt="Logo Hope to Home" style="width: 200px; height: auto;" onclick="scrollView('page-top')"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link cursor" onclick="scrollView('home')">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="scrollView('services')">Layanan</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="scrollView('prediksi')">Prediksi</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="scrollView('kpr')">KPR</a></li>
+                        <li class="nav-item"><a class="nav-link cursor" onclick="scrollView('team')">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                    <div class="masthead-subheading" style="font-size:x-large;">Selamat Datang di Website Prediksi Harga Penawaran Rumah Kota Surabaya</div>
+                    <div class="masthead-heading text-uppercase">Hope to Home</div>
+                    <a class="btn btn-primary btn-xl text-uppercase" style="color: #2b2626;" onclick="scrollView('services')">Layanan Kami</a>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                        <!-- Carousel  -->
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a href="{{ carousel_link[0] }}" target="_blank">
+                                    <img id="top-carousel1" src="{{ carousel_image[0] }}" class="d-block w-100" alt="House Image 1">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="{{ carousel_link[1] }}" target="_blank">
+                                    <img id="top-carousel2" src="{{ carousel_image[1] }}" class="d-block w-100" alt="House Image 2">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="{{ carousel_link[2] }}" target="_blank">
+                                    <img id="top-carousel3" src="{{ carousel_image[2] }}" class="d-block w-100" alt="House Image 3">
+                                </a>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section bg-light" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Layanan</h2>
+                    <h3 class="section-subheading text-muted">Website kami menyediakan beberapa layanan untuk kebutuhan perencanaan penjualan/pembelian rumah</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa-solid fa-house-user fa-stack-1x fa-inverse"></i>
+                            <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                        </span>
+                        <h4 class="my-3">Prediksi Harga Rumah</h4>
+                        <p class="text-muted">Masukkan kriteria rumah, dan website kami akan memberikan hasil prediksi harga penawaran rumah tersebut.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Simulasi KPR</h4>
+                        <p class="text-muted">Berdasarkan hasil prediksi harga penawaran rumah, anda dapat melakukan simulasi penghitungan KPR.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa-regular fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                            <!-- <i class="fas fa-lock fa-stack-1x fa-inverse"></i> -->
+                        </span>
+                        <h4 class="my-3">Rekomendasi</h4>
+                        <p class="text-muted">Rekomendasi rumah yang dijual akan ditampilkan berdasarkan hasil dari prediksi harga penawaran rumah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-------------------------------------------------- Prediksi Harga Rumah-->
+        <section class="page-section" id="prediksi">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Prediksi Harga Rumah</h2>
+                    <h3 class="section-subheading text-muted">Temukan Harga Rumah Impianmu!</h3>
+                </div>
+                <form id="form-prediksi" class="card-text" style="font-size: 90%;" autocomplete="on">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                            <label class="form-label">Luas Tanah (m<sup>2</sup>)</label>
+                            <input type="text" class="form-control " id="inputLuasA" placeholder="contoh: 160" style="font-size: 90%" required/>
+                            <label class="form-label">Luas Bangunan (m<sup>2</sup>)</label>
+                            <input type="text" class="form-control " id="inputLuasB" placeholder="contoh: 220" style="font-size: 90%" required/>
+                            <label class="form-label">Kamar Tidur</label>
+                            <input type="text" class="form-control " id="inputKamarT" placeholder="contoh: 3" style="font-size: 90%" required/>
+                            <label class="form-label">Kamar Mandi</label>
+                            <input type="text" class="form-control " id="inputKamarM" placeholder="contoh: 2" style="font-size: 90%" required/>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                            <label class="form-label">Jumlah Garasi</label>
+                            <input type="text" class="form-control " id="inputGarasi" placeholder="contoh: 1" style="font-size: 90%" required/>
+                            <label class="form-label">Besaran Listrik (Watt)</label>
+                            <input type="text" class="form-control " id="inputListrik" placeholder="contoh: 2200" style="font-size: 90%" required/>
+                            <label class="form-label">Perabotan</label>
+                            <input type="text" list="listPerabotan" class="form-control " id="inputPerabotan" placeholder="contoh: Furnished" style="font-size: 90%"/>
+                            <datalist id="listPerabotan">
+                                {% for furniture in furniture_dict %}
+                                    <option value="{{furniture}}">
+                                {% endfor %}
+                            </datalist>
+                            <label class="form-label">Lokasi</label>
+                            <input type="text" list="listLokasi" class="form-control " id="inputLokasi" placeholder="contoh: Gubeng, Surabaya" style="font-size: 90%"/>
+                            <datalist id="listLokasi">
+                                {% for location in location_dict %}
+                                    <option value="{{location}}">
+                                {% endfor %}
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="row-cols-6" style="margin-top: 5%; text-align: center;">
+                        <!-- Button trigger modal -->
+                        <input type="submit" class="btn btn-primary" style="color: #2b2626; font-weight: bold;" value="Prediksi"></input>
+                    </div>
+                </form>
+                <div id="div-prediksi" class="row" style="display: none; margin-top: 3%;">
+                    <h4>Hasil Prediksi Harga Penawaran</h4>
+                    <div class="container rounded" style="padding: 3%; background-color: #c2cad1; color: black; text-align: center;">
+                        <h6 id="hasil-prediksi-low"></h6>
+                        <h6 id="hasil-prediksi-high"></h6>
+                    </div>
+
+                    <div class="row" style="text-align: center; margin-top: 5%;">
+                        <p>Lanjutkan pada kalkulasi KPR?</p>
+                    </div>
+                    <div class="row-cols-6" style="text-align: center;">
+                        <a type="button" class="btn btn-success" href="#kpr" style="font-size: 90%;">Ya</a>
+                        <a type="button" class="btn btn-danger" href="#portfolio" style="font-size: 90%; margin-left: 10px;">Tidak</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- -------------------------------------------------------------------------------------- -->
+        <!-------------------------------------------- Showcase Rumah -->
+        <section class="page-section bg-light" id="portfolio" style="display: none;">
+            <div class="mt-5" style="text-align: center;">
+                <h3>Rekomendasi Rumah</h3>
+                <p>Berdasarkan hasil prediksi model</p>
+            </div>
+
+            <!-- Container for the image gallery -->
+            <div class="container mt-3 col-lg-6">
+                
+                <!-- Full-width images with number text -->
+                <div class="mySlides">
+                    <div class="numbertext">1 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-1" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-1"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-1"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mySlides">
+                    <div class="numbertext">2 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-2" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-2"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-2"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mySlides">
+                    <div class="numbertext">3 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-3" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-3"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-3"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mySlides">
+                    <div class="numbertext">4 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-4" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-4"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-4"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mySlides">
+                    <div class="numbertext">5 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-5" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-5"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-5"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="mySlides">
+                    <div class="numbertext">6 / 6</div>
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid recom-img-6" src="" alt="..."/>
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading recom-name-1"></div>
+                            <div class="portfolio-caption-subheading text-muted recom-location-6"></div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            
+                <!-- Image text -->
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+            
+                <!-- Thumbnail images -->
+                <div class="row">
+                    <div class="column">
+                        <img class="demo cursor recom-img-1" src="" style="width:100%" onclick="currentSlide(1)" alt="">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor recom-img-2" src="" style="width:100%" onclick="currentSlide(2)" alt="">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor recom-img-3" src="" style="width:100%" onclick="currentSlide(3)" alt="">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor recom-img-4" src="" style="width:100%" onclick="currentSlide(4)" alt="">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor recom-img-5" src="" style="width:100%" onclick="currentSlide(5)" alt="">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor recom-img-6" src="" style="width:100%" onclick="currentSlide(6)" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- -------------------------------------------------------------------------------------- -->
+        <!-- Kalkulasi KPR -->
+        <section class="page-section" id="kpr">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">KPR</h2>
+                    <h3 class="section-subheading text-muted">Simulasi Angsuran Pembelian Rumah Impianmu!</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                        <div style="text-align: center;">
+                            <h6>Tipe KPR</h6>
+                            <button id="btn-kpr-fixed" class="btn btn-primary" style="color: #2b2626;"><strong>Fixed</strong></button>
+                            <button id="btn-kpr-float" class="btn btn-primary" style="color: #2b2626;"><strong>Float</strong></button>
+                        </div>
+                        <div id="kalkulasi-kpr-fix" class="card-text" style="font-size: 90%; margin-top: 5%; display: none;">
+                            <label class="form-label">Harga Properti (Rupiah)</label>
+                            <input type="text" class="form-control kpr-input-fix" id="kpr-harga-fix" placeholder="contoh: 1500000000" style="font-size: 90%"/>
+                            <label class="form-label">Jangka Waktu Pinjaman (tahun)</label>
+                            <input type="number" class="form-control kpr-input-fix" id="kpr-tenor-fix" placeholder="contoh: 10" style="font-size: 90%"/>
+                            <label class="form-label">Suku Bunga Pinjaman (%)</label>
+                            <input type="number" class="form-control kpr-input-fix" id="kpr-bunga-fix" placeholder="contoh: 5" style="font-size: 90%"/>
+                        </div>
+                        <div id="kalkulasi-kpr-float" class="card-text" style="font-size: 90%; margin-top: 5%; display: none;">
+                            <label class="form-label">Harga Properti (Rupiah)</label>
+                            <input type="text" class="form-control kpr-input-float" id="kpr-harga-float" placeholder="contoh: 1500000000" style="font-size: 90%"/>
+                            <label class="form-label">Jangka Waktu Pinjaman (tahun)</label>
+                            <input type="number" class="form-control kpr-input-float" id="kpr-tenor-float" placeholder="contoh: 10" style="font-size: 90%"/>
+                            <div id="kpr-float-input">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 mb-4 mb-sm-0">
+                        <div id="kpr-result-fixed" style="display: none;">
+                            <div class="card text-center">
+                                <p><strong>Angsuran per bulan</strong></p>
+                                <p style="font-size: 170%; font-weight: bold;" id="kpr-angsuran-fixed">Masukkan nilai di samping!</p>
+                                <p style="margin-bottom: 0;"><strong>Total pembayaran</strong></p>
+                                <p id="kpr-total-fixed" contenteditable="true" ></p>
+                                <p class="card-footer">Perhitungan KPR didasarkan pada <a href="https://www.ocbc.id/id/article/2023/10/04/cara-menghitung-cicilan-kpr" style="color: #222;">OCBC</a></p> 
+                            </div>
+                            <br>
+                            <div class="card text-center">
+                                <p><strong>Kalkulator KPR bank lain</strong></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card btn btn-primary" style="margin: auto; background-color: white; color: #222;" onclick="redirectOut('https://www.bankmandiri.co.id/kalkulator-kpr')">
+                                            <img style="max-height: 3rem;" src="{{ url_for('static', filename='assets/img/logos/logo_mandiri.svg') }}">
+                                            <p style="margin-top: 7%;">Mandiri</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card btn btn-primary" style="margin: auto; background-color: white; color: #222;" onclick="redirectOut('https://bri.co.id/simulasi-kpr')">
+                                            <img style="max-height: 3rem;" src="{{ url_for('static', filename='assets/img/logos/logo_bri.svg') }}" alt="">
+                                            <p style="margin-top: 10%;">BRI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="kpr-result-float" style="display: none;">
+                            <div class="card text-center">
+                                <p><strong>Angsuran per bulan</strong></p>
+                                <div id="kpr-angsuran-float">
+                                    <p style="font-size: 170%; font-weight: bold;">Masukkan nilai di samping!</p>
+                                </div>
+                                <p id="kpr-total-float"></p>
+                                <p class="card-footer">Perhitungan KPR didasarkan pada <a href="https://www.ocbc.id/id/article/2023/10/04/cara-menghitung-cicilan-kpr" style="color: #222;">OCBC</a></p> 
+                            </div>
+                            <br>
+                            <div class="card text-center">
+                                <p><strong>Kalkulator KPR bank lain</strong></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card btn btn-primary" style="margin: auto; background-color: white; color: #222;" onclick="redirectOut('https://www.bankmandiri.co.id/kalkulator-kpr')">
+                                            <img style="max-height: 3rem;" src="{{ url_for('static', filename='assets/img/logos/logo_mandiri.svg') }}">
+                                            <p style="margin-top: 7%;">Mandiri</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card btn btn-primary" style="margin: auto; background-color: white; color: #222;" onclick="redirectOut('https://bri.co.id/simulasi-kpr')">
+                                            <img style="max-height: 3rem;" src="{{ url_for('static', filename='assets/img/logos/logo_bri.svg') }}" alt="">
+                                            <p style="margin-top: 10%;">BRI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="margin-bottom: 5%;">BIODATA PENGEMBANG</h2>
+                    <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="{{ url_for('static', filename='assets/img/pfp_Hanif.jpeg') }}" alt="..." />
+                            <h4>Muhammad Hanif Sudibyo</h4>
+                            <p class="text-muted">Mahasiswa S1<br>Program Studi Teknologi Sains Data<br>Universitas Airlangga</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://discordapp.com/users/avantgarde_dayo" aria-label="Discord Profile"><i class="fa-brands fa-discord"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://github.com/FluffHound" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/muhammad-hanif-sudibyo/" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Website prediksi harga penawaran rumah Kota Surabaya "Hope to Home" ini dibuat sebagai bentuk keluaran proyek Skripsi S1 pengembang. Gunakan aset yang dibuat publik pada website Hope to Home dengan bijak, penggunaan aset dibebaskan dalam ranah akademis.</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="https://kampusmerdeka.kemdikbud.go.id/">
+                            <img class="img-fluid img-brand d-block mx-auto" src="{{ url_for('static', filename='assets/img/logos/kampus_merdeka.png') }}" alt="Kampus Merdeka" aria-label="Kampus Merdeka" />
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="https://unair.ac.id/en/">
+                            <img class="img-fluid img-brand d-block mx-auto" src="{{ url_for('static', filename='assets/img/logos/uner_hebat_hitam.png') }}" alt="Unair Hebat" aria-label="Unair Hebat" />
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="https://unair.ac.id/en/">
+                            <img style="height: 6rem" class="img-fluid img-brand d-block mx-auto" src="{{ url_for('static', filename='assets/img/logos/logo_uner.png') }}" alt="Universitas Airlangga" aria-label="Universitas Airlangga" />
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="https://ftmm.unair.ac.id/">
+                            <img class="img-fluid img-brand d-block mx-auto" src="{{ url_for('static', filename='assets/img/logos/FTMM_logo.png') }}" alt="FTMM Unair" aria-label="FTMM Unair" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase" style="margin-bottom: 5%;">Kontak Pengembang</h2>
+                    <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+                </div>
+                
+                <form id="contactForm">
+                    <div class="col-lg-6" style="margin: auto;">
+                        <div class="form-group">
+                            <!-- Name input-->
+                            <input class="form-control" id="heading" type="text" placeholder="Judul" required/>
+                        </div>
+                        <div class="form-group form-group-textarea mb-md-0">
+                            <!-- Message input-->
+                            <textarea class="form-control" id="message" placeholder="Pesan" required></textarea>
+                        </div>
+                    </div>
+                    <!-- Submit Button-->
+                    <div class="text-center" style="margin-top: 5%;">
+                        <button class="btn btn-primary btn-xl text-uppercase" onclick="sendMail()">Kirim Pesan</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!------------------------------------------ Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-1"></h3>
+                                    <p class="item-intro text-muted recom-location-1"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-1" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-1"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-1"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-1"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-1"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-1"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-1"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-1"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-1"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-1" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ---------------------------------------------------------------------------------------- -->
+        <!---------------------------------------------------- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-2"></h3>
+                                    <p class="item-intro text-muted recom-location-2"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-2" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-2"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-2"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-2"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-2"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-2"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-2"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-2"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-2"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-2" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- -------------------------------------------------------------------------------------------- -->
+        <!---------------------------------------------- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-3"></h3>
+                                    <p class="item-intro text-muted recom-location-3"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-3" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-3"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-3"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-3"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-3"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-3"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-3"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-3"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-3"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-3" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------- -->
+        <!-------------------------------------------- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-4"></h3>
+                                    <p class="item-intro text-muted recom-location-4"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-4" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-4"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-4"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-4"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-4"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-4"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-4"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-4"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-4"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-4" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------ -->
+        <!-------------------------------------------- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-5"></h3>
+                                    <p class="item-intro text-muted recom-location-5"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-5" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-5"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-5"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-5"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-5"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-5"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-5"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-5"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-5"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-5" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------ -->
+        <!-------------------------------------------- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{ url_for('static', filename='assets/img/close-icon.svg') }}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h3 class="text-uppercase recom-name-6"></h3>
+                                    <p class="item-intro text-muted recom-location-6"></p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img class="img-fluid d-block mx-auto recom-img-6" src="" alt="..." />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-bed"></i><strong> Kamar Tidur:</strong>
+                                                            <p id="recom-bed-6"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bath"></i><strong> Kamar Mandi:</strong>
+                                                            <p id="recom-bath-6"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-chart-area"></i><strong> Luas Tanah:</strong>
+                                                            <p id="recom-land-6"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-building"></i><strong> Luas Bangunan:</strong>
+                                                            <p id="recom-building-6"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <i class="fa-solid fa-warehouse"></i><strong> Jumlah Garasi:</strong>
+                                                            <p id="recom-garage-6"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-bolt"></i><strong> Daya Listrik:</strong>
+                                                            <p id="recom-electricity-6"></p>
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa-solid fa-couch"></i><strong> Perabotan:</strong>
+                                                            <p id="recom-furniture-6"></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background-color: #979797; margin: auto; padding: 0%; padding-top: 1%;">
+                                        <h5><i class="fa-solid fa-coins"></i> Harga:</h5>
+                                        <h4 id="recom-price-6"></h4>
+                                    </div>
+                                    <div style="margin-top: 5%;">
+                                        <a id="recom-link-6" href="" target="_blank">
+                                            <button class="btn btn-primary btn-xl text-uppercase" type="button">
+                                                Kunjungi Link
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Tutup Layar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------ -->
+
+        <div id="price-pred" style="display: none;"></div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <!-- Autonumeric -->
+        <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.8.1"></script>
+        
+        <script>
+            // Scroll to section JS
+            function scrollView(elem)
+            {
+                section = document.getElementById(elem);
+                section.scrollIntoView();
+            };
+
+            // Redirect to another URL
+            function redirectOut(link)
+            {
+                window.location.href = link;
+            };
+
+            // Autonumeric
+            input_kpr_fix = document.getElementById('kpr-harga-fix');
+            input_kpr_float = document.getElementById('kpr-harga-float');
+            new AutoNumeric(input_kpr_fix, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}, {watchExternalChanges: true}]);
+            new AutoNumeric(input_kpr_float, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}, {watchExternalChanges: true}]);
+
+            input_pred_luasA = document.getElementById('inputLuasA');
+            input_pred_luasB = document.getElementById('inputLuasB');
+            input_pred_kamarT = document.getElementById('inputKamarT');
+            input_pred_kamarM = document.getElementById('inputKamarM');
+            input_pred_garasi = document.getElementById('inputGarasi');
+            input_pred_listrik = document.getElementById('inputListrik');
+            new AutoNumeric(input_pred_luasA, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+            new AutoNumeric(input_pred_luasB, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+            new AutoNumeric(input_pred_kamarT, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+            new AutoNumeric(input_pred_kamarM, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+            new AutoNumeric(input_pred_garasi, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+            new AutoNumeric(input_pred_listrik, [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+
+            // Rumus KPR
+            $('#btn-kpr-fixed').on('click', function()
+            {
+                document.getElementById('kalkulasi-kpr-fix').style.display = 'block';
+                document.getElementById('kalkulasi-kpr-float').style.display = 'none';
+                document.getElementById('kpr-result-fixed').style.display = 'block';
+                document.getElementById('kpr-result-float').style.display = 'none';
+                $('.kpr-input-fix').on('keyup', function()
+                {
+                    var harga_fix = $('#kpr-harga-fix').val();
+                    harga_fix = AutoNumeric.unformat(harga_fix, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]);
+                    var tenor_fix = $('#kpr-tenor-fix').val();
+                    var bunga_fix = $('#kpr-bunga-fix').val();
+
+                    var cil_pokok_fix = harga_fix / (tenor_fix * 12);
+                    var cil_bulan_fix = ((harga_fix * (bunga_fix / 100)) * tenor_fix) / (tenor_fix * 12);
+                    var cil_total_fix = cil_pokok_fix + cil_bulan_fix;
+
+                    document.getElementById("kpr-angsuran-fixed").innerText = AutoNumeric.format(cil_total_fix, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]);
+                    document.getElementById("kpr-total-fixed").innerText = AutoNumeric.format((cil_total_fix * (tenor_fix * 12)), [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]);
+                });
+            });
+
+            $('#btn-kpr-float').on('click', function()
+            {
+                document.getElementById('kalkulasi-kpr-fix').style.display = 'none';
+                document.getElementById('kalkulasi-kpr-float').style.display = 'block';
+                document.getElementById('kpr-result-float').style.display = 'block';
+                document.getElementById('kpr-result-fixed').style.display = 'none';
+                $('#kpr-tenor-float').on('keyup', function()
+                {
+                    $('#kpr-float-input').empty();
+                    $('#kpr-angsuran-float').empty();
+                    var tenor_float = $('#kpr-tenor-float').val();
+                    for(i = 1; i <= tenor_float; i++)
+                    {
+                        label = '<label class="form-label">Suku Bunga Pinjaman (%) tahun ke-' + i + '</label>';
+                        textbox = '<input type="number" class="form-control kpr-input-float kpr-bunga-float" placeholder="contoh: 5" style="font-size: 90%"/>';
+                        $('#kpr-float-input').append(label + textbox);
+                    }
+                });
+                
+                $('#kalkulasi-kpr-float').on('keyup', 'input', function()
+                {
+                    $('#kpr-angsuran-float').empty();
+                    var harga_float = $('#kpr-harga-float').val();
+                    harga_float = AutoNumeric.unformat(harga_float, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]);
+                    var tenor_float = $('#kpr-tenor-float').val();
+                    var bunga_float_arr = $('.kpr-bunga-float').map(function()
+                    {
+                        return +this.value;
+                    }).get();
+
+                    var cil_pokok_float = harga_float / (tenor_float * 12);
+
+                    var cil_bulan_float = [];
+                    for(i = 0; i < bunga_float_arr.length; i++)
+                    {
+                        cil_bulan_float.push(((harga_float * (bunga_float_arr[i] / 100)) * tenor_float) / (tenor_float * 12));
+                    }
+
+                    var cil_total_float = [];
+                    for(i = 0; i < bunga_float_arr.length; i++)
+                    {
+                        cil_total_float.push(cil_pokok_float + cil_bulan_float[i]);
+                    }
+
+                    for(i = 1; i <= bunga_float_arr.length; i++)
+                    {
+                        angsuran = '<p style="margin-bottom: 0;">Angsuran per bulan tahun ke-' + i + '</p>';
+                        label_angsuran = '<p style="font-size: 170%; font-weight: bold; margin-bottom: 0;" id="kpr-angsuran-float-' + i + '">' + AutoNumeric.format(cil_total_float[i-1], [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]) + '</p>';
+                        $('#kpr-angsuran-float').append(angsuran + label_angsuran);
+                    }
+
+                    total_angsuran_float = 0;
+                    for(i = 0; i < bunga_float_arr.length; i++)
+                    {
+                        total_angsuran_float += (cil_total_float[i] * 12);
+                    }
+
+                    angsuran = '<p style="margin-top: 3%; margin-bottom: 0; font-weight: bold;">Total pembayaran</p>';
+                    label_angsuran = '<p style="font-size: 170%; font-weight: bold;">' + AutoNumeric.format(total_angsuran_float, [{ currencySymbol: 'Rp ' }, {digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}]) + '</p>';
+                    $('#kpr-angsuran-float').append(angsuran + label_angsuran);
+                });
+            });
+            
+            // Form prediksi
+            $(document).on("submit", "#form-prediksi", function(event){
+                event.preventDefault();
+                var x1 = AutoNumeric.unformat($('#inputKamarT').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x2 = AutoNumeric.unformat($('#inputKamarM').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x3 = AutoNumeric.unformat($('#inputLuasA').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x4 = AutoNumeric.unformat($('#inputLuasB').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x5 = AutoNumeric.unformat($('#inputGarasi').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x6 = AutoNumeric.unformat($('#inputListrik').val(), [{digitGroupSeparator: '.'}, {decimalCharacter: ','}, {decimalPlaces: 0}, {modifyValueOnWheel: false}, {minimumValue: 0}]);
+                var x7 = $('#inputPerabotan').val();
+                var x8 = $('#inputLokasi').val();
+
+                document.getElementById('div-prediksi').style.display = 'block';
+            
+                $.ajax({
+                    url: "/predict_calc",
+                    type: "get",
+                    data: 
+                    {
+                        x1: x1,
+                        x2: x2,
+                        x3: x3,
+                        x4: x4,
+                        x5: x5,
+                        x6: x6,
+                        x7: x7,
+                        x8: x8
+                    },
+                    success: function(response) {
+                        $("#hasil-prediksi-low").text('Perkiraan harga penawaran terendah:   ' + response[0]);
+                        $("#hasil-prediksi-high").text('Perkiraan harga penawaran tertinggi:   ' + response[1]);
+                        $("#price-pred").text(response[2]);
+                        $('#kpr-harga-fix').val(response[2]);
+                        $('#kpr-harga-float').val(response[2]);
+                    },
+                    complete: function() {
+                        var harga_pred = document.getElementById('price-pred').textContent;
+                        $.ajax({
+                            url: "/recommendation",
+                            type: "get",
+                            data: 
+                            {
+                                x0: harga_pred,
+                                x1: x1,
+                                x2: x2,
+                                x3: x3,
+                                x4: x4,
+                                x5: x5,
+                                x6: x6,
+                                x7: x7,
+                                x8: x8
+                            },
+                            success: function(recom) {
+                                document.getElementById('portfolio').style.display = 'block';
+
+                                $(".recom-img-1").attr('src', recom['img_link'][0]);
+                                $(".recom-img-2").attr('src', recom['img_link'][1]);
+                                $(".recom-img-3").attr('src', recom['img_link'][2]);
+                                $(".recom-img-4").attr('src', recom['img_link'][3]);
+                                $(".recom-img-5").attr('src', recom['img_link'][4]);
+                                $(".recom-img-6").attr('src', recom['img_link'][5]);
+
+                                $(".recom-img-1").attr('alt', recom['price'][0]);
+                                $(".recom-img-2").attr('alt', recom['price'][1]);
+                                $(".recom-img-3").attr('alt', recom['price'][2]);
+                                $(".recom-img-4").attr('alt', recom['price'][3]);
+                                $(".recom-img-5").attr('alt', recom['price'][4]);
+                                $(".recom-img-6").attr('alt', recom['price'][5]);
+
+                                $(".recom-name-1").text(recom['name'][0]);
+                                $(".recom-name-2").text(recom['name'][1]);
+                                $(".recom-name-3").text(recom['name'][2]);
+                                $(".recom-name-4").text(recom['name'][3]);
+                                $(".recom-name-5").text(recom['name'][4]);
+                                $(".recom-name-6").text(recom['name'][5]);
+
+                                $(".recom-location-1").text(recom['location'][0]);
+                                $(".recom-location-2").text(recom['location'][1]);
+                                $(".recom-location-3").text(recom['location'][2]);
+                                $(".recom-location-4").text(recom['location'][3]);
+                                $(".recom-location-5").text(recom['location'][4]);
+                                $(".recom-location-6").text(recom['location'][5]);
+
+                                $("#recom-link-1").attr('href', recom['link'][0])
+                                $("#recom-link-2").attr('href', recom['link'][1])
+                                $("#recom-link-3").attr('href', recom['link'][2])
+                                $("#recom-link-4").attr('href', recom['link'][3])
+                                $("#recom-link-5").attr('href', recom['link'][4])
+                                $("#recom-link-6").attr('href', recom['link'][5])
+
+                                $("#recom-price-1").text(recom['price'][0]);
+                                $("#recom-price-2").text(recom['price'][1]);
+                                $("#recom-price-3").text(recom['price'][2]);
+                                $("#recom-price-4").text(recom['price'][3]);
+                                $("#recom-price-5").text(recom['price'][4]);
+                                $("#recom-price-6").text(recom['price'][5]);
+
+                                $("#recom-bed-1").text(recom['bed'][0]);
+                                $("#recom-bed-2").text(recom['bed'][1]);
+                                $("#recom-bed-3").text(recom['bed'][2]);
+                                $("#recom-bed-4").text(recom['bed'][3]);
+                                $("#recom-bed-5").text(recom['bed'][4]);
+                                $("#recom-bed-6").text(recom['bed'][5]);
+
+                                $("#recom-bath-1").text(recom['bath'][0]);
+                                $("#recom-bath-2").text(recom['bath'][1]);
+                                $("#recom-bath-3").text(recom['bath'][2]);
+                                $("#recom-bath-4").text(recom['bath'][3]);
+                                $("#recom-bath-5").text(recom['bath'][4]);
+                                $("#recom-bath-6").text(recom['bath'][5]);
+
+                                $("#recom-land-1").text(recom['land_size'][0] + ' m²');
+                                $("#recom-land-2").text(recom['land_size'][1] + ' m²');
+                                $("#recom-land-3").text(recom['land_size'][2] + ' m²');
+                                $("#recom-land-4").text(recom['land_size'][3] + ' m²');
+                                $("#recom-land-5").text(recom['land_size'][4] + ' m²');
+                                $("#recom-land-6").text(recom['land_size'][5] + ' m²');
+
+                                $("#recom-building-1").text(recom['building_size'][0] + ' m²');
+                                $("#recom-building-2").text(recom['building_size'][1] + ' m²');
+                                $("#recom-building-3").text(recom['building_size'][2] + ' m²');
+                                $("#recom-building-4").text(recom['building_size'][3] + ' m²');
+                                $("#recom-building-5").text(recom['building_size'][4] + ' m²');
+                                $("#recom-building-6").text(recom['building_size'][5] + ' m²');
+
+                                $("#recom-garage-1").text(recom['garage'][0]);
+                                $("#recom-garage-2").text(recom['garage'][1]);
+                                $("#recom-garage-3").text(recom['garage'][2]);
+                                $("#recom-garage-4").text(recom['garage'][3]);
+                                $("#recom-garage-5").text(recom['garage'][4]);
+                                $("#recom-garage-6").text(recom['garage'][5]);
+                                
+                                $("#recom-electricity-1").text(recom['electricity'][0] + ' Watt');
+                                $("#recom-electricity-2").text(recom['electricity'][1] + ' Watt');
+                                $("#recom-electricity-3").text(recom['electricity'][2] + ' Watt');
+                                $("#recom-electricity-4").text(recom['electricity'][3] + ' Watt');
+                                $("#recom-electricity-5").text(recom['electricity'][4] + ' Watt');
+                                $("#recom-electricity-6").text(recom['electricity'][5] + ' Watt');
+
+                                $("#recom-furniture-1").text(recom['furniture'][0]);
+                                $("#recom-furniture-2").text(recom['furniture'][1]);
+                                $("#recom-furniture-3").text(recom['furniture'][2]);
+                                $("#recom-furniture-4").text(recom['furniture'][3]);
+                                $("#recom-furniture-5").text(recom['furniture'][4]);
+                                $("#recom-furniture-6").text(recom['furniture'][5]);
+                            },
+                            error: function(xhr) {
+                                console.error(xhr);
+                            }
+                        });
+                    },
+                    error: function(xhr) {
+                        console.error(xhr);
+                    }
+                });
+            });
+
+            // Form kontak
+            function sendMail()
+            {
+                heading = document.getElementById('heading').value;
+                content = document.getElementById('message').value;
+
+                window.location.href = 'mailto:muhammad.hanif.sudibyo-2020@ftmm.unair.ac.id?subject=' + heading + '&body=' + content;
+            };
+            
+            // Rekomendasi rumah slideshow
+            let slideIndex = 1;
+            showSlides(slideIndex);
+
+            // Next/previous controls
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+            }
+
+            // Check input perabotan & lokasi
+            $('input[type="submit"]').on('click',function(e) {
+            $datalistFurniture = $('#inputPerabotan').val();
+            $datalistLocation = $('#inputLokasi').val();
+            if ($('option[value="'+$datalistFurniture+'"]').length == 0) //if no option is found alert the user
+            {
+                alert('Mohon masukkan kondisi perabotan sesuai dengan daftar pilihan, lalu klik salah satu pilihan!');
+                e.preventDefault();
+            }
+            else if ($('option[value="'+$datalistLocation+'"]').length == 0) //if no option is found alert the user
+            {
+                alert('Mohon masukkan lokasi sesuai dengan daftar pilihan, lalu klik salah satu pilihan!');
+                e.preventDefault();
+            }
+            });
+
+        </script>
+            
+    </body>
+</html>
